@@ -1,62 +1,19 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <div id="root"></div>
+        <span>Total clicks : 0</span>
+        <button id="btn">Click me</button>
     </body>
-    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
-    <script 
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script type="text/babel">
-        const root = document.getElementById("root");
-        //실제 HTML태그와 반드시 같은 이름이어야 함
-        //첫 번째 인자 : HTML태그
-        //두 번째 인자 : 첫 번째 인자로 적어준 HTML태그의 properties (class name or id ..)
-        //세 번째 인자 : 태그 안에 들어갈 내용 (content)
-        // const h3 = React.createElement(
-        //     "h3", 
-        //     {
-        //         id: "title",
-        //         onMouseEnter: ()=> console.log("mouse Enter")
-        //     }, 
-        //     "Hello, I'm a span"
-        // );
-        function Title (){
-            return(
-                <h3 id="title" onMouseEnter={() => console.log("mouse Enter")}>Hello, I'm a title</h3>
-            );
+    <script>
+        let counter = 0;
+        const button = document.getElementById("btn");
+        const span = document.querySelector("span");
+        function handleClick(){
+            console.log("I have been clicked");
+            counter += 1;
+            console.log(counter);
+            span.innerText = `Total clicks : ${counter}`;
         }
-
-        // const btn = React.createElement(
-        //     "button",
-        //     {
-        //         onClick: () => console.log("im clicked"),
-        //         style: {
-        //             backgroundColor: "tomato"
-        //         }
-        //     },
-        //     "Click me"
-        // );
-        const Button = () => (
-            <button onClick={() => console.log("im clicked")} style={{backgroundColor: "tomato"}}>Click me</button>
-        );
-
-        // const container = React.createElement(
-        //     "div",
-        //     null,
-        //     [Title, Button]
-        // ); 
-        function Container() {
-            return(
-                <div>
-                    <Title />
-                    <Button />
-                </div>
-            );
-        }
-
-        //render : React element를 가지고 HTML로 만들어 배치
-        //span태그를 root id를 가진 곳에 배치
-        ReactDOM.render(<Container />, root);
+        button.addEventListener("click", handleClick);
     </script>
 </html>
