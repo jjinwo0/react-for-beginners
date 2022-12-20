@@ -8,23 +8,44 @@
     <script 
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
+
+    //setState()
         const root = document.getElementById("root");
-        let counter = 0;
-        function countUp(){
-            counter += 1;
-            render();
-        }
-        function render(){
-            ReactDOM.render(<Container />, root);
-        }
-        function Container(){ 
+        function App(){
+            const [counter, setCounter] = React.useState(0);
+            const onClick = () => {
+                setCounter(counter + 1);
+                //state값 변경이 감지되었을 때 rerendering
+            }
+            //React.useState() -> [`use data`, `data modify function`]
             return (
                 <div>
-                    <h3>Total clicks: {counter}</h3>
-                    <button onClick={countUp}>Click me</button>
+                    <h3>Total Clicks: {counter} </h3>
+                    <button onClick={onClick}>Click me</button>
                 </div>
-            ); 
+            );
         }
+        ReactDOM.render(<App />, root);
+
+        //--Second JSX
+        //let counter = 0;
+        // function countUp(){
+        //     counter += 1;
+        //     render();
+        // }
+        // function render(){
+        //     ReactDOM.render(<Container />, root);
+        // }
+        // function Container(){ 
+        //     return (
+        //         <div>
+        //             <h3>Total clicks: {counter}</h3>
+        //             <button onClick={countUp}>Click me</button>
+        //         </div>
+        //     );
+        // }
+
+        //--First JSX
         // function Title (){
         //     return(
         //         <h3 id="title" onMouseEnter={() => console.log("mouse Enter")}>Hello, I'm a title</h3>
@@ -45,6 +66,6 @@
 
         //render : React element를 가지고 HTML로 만들어 배치
         //span태그를 root id를 가진 곳에 배치
-        render();
+        // render();
     </script>
 </html>
